@@ -1,0 +1,7 @@
+Endpoint,URL,Params,Time,Method,Response
+Logout,/logout,None,25/Mar/2013:02:59:22,POST,200
+Other,/api/vendors/search,['lat=37.785834'/ 'lon=-122.406417'/ 'category='/ 'time=03:14'/ 'radius='/ 'party_size=2'],25/Mar/2013:02:59:33,GET,200
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364184060'/ 'to=1364270340'],25/Mar/2013:09:30:26,GET,200
+Other,/api/vendors/stub_search,None,25/Mar/2013:09:30:26,GET,200
+Score Info,/api/users/me/scores/info,['score_type=3'/ 'vendor=37'/ 'party_size=2'],25/Mar/2013:09:30:51,GET,500
+Score Info,/api/users/me/scores/info,['score_type=3'/ 'vendor=37'/ 'party_size=2'],25/Mar/2013:09:30:55,GET,500
