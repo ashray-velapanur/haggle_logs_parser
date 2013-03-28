@@ -24,8 +24,17 @@ def get_time(line):
     return datetime.fromtimestamp(float(timestamp)).strftime('%d/%b/%Y:%H:%M:%S')
 
 def get_mapping(url, params, method, time):
+    time_plus_15 = datetime.strftime(datetime.strptime(time, '%d/%b/%Y:%H:%M:%S') + timedelta(minutes=15), '%H:%M')
     if url == '/users/login':
         return 'Login'
+    if params and url == '/api/vendors/search' and not [param for param in params if param.startswith('q=')]:
+        if time_plus_15 in [param.split('=')[1] for param in params if param.startswith('time=')]:
+            if 'party_size=2' in params:
+                return 'Refresh Button/Home Screen'
+            return 'Party Size Button'
+        elif 'category=' not in params or 'radius=' not in params or 'dollar_rating=' not in params:
+            return ' Filters Screen'
+        return 'Time Button'
     if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params and 'status=AVAILED' in params:
         return 'Your Bargains Screen'
     if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params:
@@ -62,6 +71,9 @@ for line in logs:
         request['endpoint'] = get_mapping(request['url'], request['params'], request['http_method'], request['time'])
         requests.append(request)
         skip = True
+
+with open('out.txt', 'w') as file:
+    json.dump(requests, file, indent=4)
 
 users = set()
 
