@@ -1,5 +1,7 @@
 import re
+import sys
 import json
+from time import mktime
 from datetime import timedelta, datetime
 
 def get_url_and_params(line):
@@ -19,12 +21,22 @@ def get_user(line):
         return line.split(' ')[1].strip()
     return None
 
-def get_time(line):
-    timestamp = line.split(' ')[0].split(':')[1]
-    return datetime.fromtimestamp(float(timestamp)).strftime('%d/%b/%Y:%H:%M:%S')
+def get_string_from_datetime(time_struct, format):
+    return datetime.strftime(time_struct, format)
 
-def get_mapping(url, params, method, time):
-    time_plus_15 = datetime.strftime(datetime.strptime(time, '%d/%b/%Y:%H:%M:%S') + timedelta(minutes=15), '%H:%M')
+def get_timestamp(line):
+    return line.split(' ')[0].split(':')[1]
+
+def get_string_from_timestamp(timestamp, format):
+    return datetime.fromtimestamp(float(timestamp)).strftime(format)
+
+def get_datetime_from_timestamp(timestamp):
+    return datetime.fromtimestamp(float(timestamp))
+
+def get_mapping(url, params, method, timestamp):
+    format = '%H:%M'
+    time_struct = get_datetime_from_timestamp(timestamp)
+    time_plus_15 = get_string_from_datetime(time_struct + timedelta(minutes=15), format)
     if url == '/users/login':
         return 'Login'
     if params and url == '/api/vendors/search' and not [param for param in params if param.startswith('q=')]:
@@ -32,7 +44,7 @@ def get_mapping(url, params, method, time):
             if 'party_size=2' in params:
                 return 'Refresh Button/Home Screen'
             return 'Party Size Button'
-        elif 'category=' not in params or 'radius=' not in params or 'dollar_rating=' not in params:
+        elif 'category=' not in params or 'radius=' not in params:
             return ' Filters Screen'
         return 'Time Button'
     if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params and 'status=AVAILED' in params:
@@ -53,6 +65,16 @@ def get_mapping(url, params, method, time):
         return 'Logout'
     return 'Other'
 
+def write_to_files(requests):
+    for user in set([request['user'] for request in requests if request['user']]):
+        file = open(user + '_logs.csv', 'w')
+        file.write('Endpoint,URL,Params,Time,Method,Response\n')
+        for request in requests:
+            if request['user'] == user: 
+                with open(user + '_logs.csv', 'a') as file:
+                    file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
+        file.close()
+
 with open('logs.txt') as file:
     logs = file.readlines()
 
@@ -67,26 +89,14 @@ for line in logs:
         request['http_method'] = get_http_method(line)
     elif skip is not True:
         request['user'] = get_user(line)
-        request['time'] = get_time(line)
-        request['endpoint'] = get_mapping(request['url'], request['params'], request['http_method'], request['time'])
+        request['timestamp'] = get_timestamp(line)
+        request['time'] = get_string_from_timestamp(request['timestamp'], '%d/%b/%Y:%H:%M:%S')
+        request['endpoint'] = get_mapping(request['url'], request['params'], request['http_method'], request['timestamp'])
         requests.append(request)
         skip = True
 
+write_to_files(requests)
+
 with open('out.txt', 'w') as file:
     json.dump(requests, file, indent=4)
-
-users = set()
-
-for request in requests:
-    if request['user'] is not None:
-        users.add(request['user'])
-
-for user in users:
-    file = open(user + '_logs.csv', 'a')
-    file.write('Endpoint,URL,Params,Time,Method,Response\n')
-    for request in requests:
-        if request['user'] == user:
-            with open(user + '_logs.csv', 'a') as file:
-                file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
-    file.close()
 
