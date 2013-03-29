@@ -45,7 +45,7 @@ def get_mapping(url, params, method, timestamp):
                 return 'Refresh Button/Home Screen'
             return 'Party Size Button'
         elif 'category=' not in params or 'radius=' not in params:
-            return ' Filters Screen'
+            return 'Filters Screen'
         return 'Time Button'
     if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params and 'status=AVAILED' in params:
         return 'Your Bargains Screen'
