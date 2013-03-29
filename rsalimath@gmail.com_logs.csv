@@ -1,8 +1,8 @@
 Endpoint,URL,Params,Time,Method,Response
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:43:07,GET,200
-Other,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=19:58'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:43:08,GET,200
-Other,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:00'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:44:01,GET,200
-Other,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:00'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:45:55,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=19:58'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:43:08,GET,200
+Time Button/,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:00'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:44:01,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:00'/ 'radius='/ 'party_size=2'],24/Mar/2013:19:45:55,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:46:19,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:46:20,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:46:28,GET,200
@@ -25,18 +25,18 @@ Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=136
 Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:49:51,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:50:04,GET,200
 Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:50:27,GET,200
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYsecCDA/status,None,24/Mar/2013:19:50:42,PUT,401
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYsecCDA/status,None,24/Mar/2013:19:50:42,PUT,401
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:50:56,GET,200
 Haggle,/api/haggles,None,24/Mar/2013:19:52:58,POST,500
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:52:59,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364097660'/ 'to=1364183940'],24/Mar/2013:19:56:21,GET,200
-Other,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:14'/ 'radius='/ 'party_size=2'/ 'next=False:CpUECokBCnwA_z-_Xrd5S480Rf_-9whJVQz__07LjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7KzsvIyP8Ac3_Oys7LyMj_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaywEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjZfMjAuMCIgInJ0ZXh0X29wZW5faG91cnMiKSAoSVMgInJhdG9tX3JlZ2lzdGVyZWQiICJ0cnVlIikpKTpxCmQoQUREIChHRU9fRElTVCAoTCBzZ2VvX2xvY2F0aW9uKSAoTE9DIDQwLjc2MDk2MiAtNzQuMDAzMTMzKSkgKE1VTCAoU1VCIDMgKE4gc25icl91c2VyX3JhdGluZykpIDI1MCkpEAAZAAAAAAAAAABKHAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJA6AdSGQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P8'],24/Mar/2013:19:59:33,GET,500
+Refresh/Home Screen,/api/vendors/search,['lat=40.760962'/ 'lon=-74.003133'/ 'category='/ 'time=20:14'/ 'radius='/ 'party_size=2'/ 'next=False:CpUECokBCnwA_z-_Xrd5S480Rf_-9whJVQz__07LjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7KzsvIyP8Ac3_Oys7LyMj_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaywEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjZfMjAuMCIgInJ0ZXh0X29wZW5faG91cnMiKSAoSVMgInJhdG9tX3JlZ2lzdGVyZWQiICJ0cnVlIikpKTpxCmQoQUREIChHRU9fRElTVCAoTCBzZ2VvX2xvY2F0aW9uKSAoTE9DIDQwLjc2MDk2MiAtNzQuMDAzMTMzKSkgKE1VTCAoU1VCIDMgKE4gc25icl91c2VyX3JhdGluZykpIDI1MCkpEAAZAAAAAAAAAABKHAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJA6AdSGQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P8'],24/Mar/2013:19:59:33,GET,500
 Settings/Data Request Screen,/api/users/me/networks,None,25/Mar/2013:12:03:20,GET,200
 Settings/Data Request Screen,/api/users/me/networks,None,25/Mar/2013:12:03:27,GET,200
 Exposed Data,/users/update_accesstoken,None,25/Mar/2013:12:03:35,POST,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364184060'/ 'to=1364270340'],25/Mar/2013:12:03:42,GET,200
-Other,/api/vendors/search,['lat=40.760403'/ 'lon=-74.003237'/ 'category='/ 'time=12:18'/ 'radius='/ 'party_size=2'],25/Mar/2013:12:03:47,GET,200
-Other,/api/vendors/search,['lat=40.760403'/ 'lon=-74.003237'/ 'category='/ 'time=12:18'/ 'radius='/ 'party_size=2'],25/Mar/2013:12:03:52,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.760403'/ 'lon=-74.003237'/ 'category='/ 'time=12:18'/ 'radius='/ 'party_size=2'],25/Mar/2013:12:03:47,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.760403'/ 'lon=-74.003237'/ 'category='/ 'time=12:18'/ 'radius='/ 'party_size=2'],25/Mar/2013:12:03:52,GET,200
 Score Info,/api/users/me/scores/info,['score_type=1'/ 'vendor=166069'/ 'party_size=2'],25/Mar/2013:12:04:02,GET,200
 Score Info,/api/users/me/scores/info,['score_type=4'/ 'vendor=166069'/ 'party_size=2'],25/Mar/2013:12:04:07,GET,200
 Score Info,/api/users/me/scores/info,['score_type=3'/ 'vendor=166069'/ 'party_size=2'],25/Mar/2013:12:04:09,GET,200
@@ -44,48 +44,67 @@ Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=136
 Exposed Data,/users/update_accesstoken,None,26/Mar/2013:08:33:14,POST,200
 Exposed Data,/users/update_accesstoken,None,26/Mar/2013:08:34:02,POST,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:08:34:14,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'],26/Mar/2013:08:34:16,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'/ 'next=False:CpQECokBCnwA_z-_e4e_f2h__f_-9whJWGn__yeQjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7Jx8_Mzv8Ac3_OycfPzM7_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:34:32,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'/ 'next=False:CpQECokBCnwA_z-_XDZ6WHrr0P_-9whJUuD__0lujIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7PxsfLyf8Ac3_Oz8bHy8n_AP_-EBQhZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:34:43,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'],26/Mar/2013:08:34:16,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'/ 'next=False:CpQECokBCnwA_z-_e4e_f2h__f_-9whJWGn__yeQjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7Jx8_Mzv8Ac3_OycfPzM7_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:34:32,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:49'/ 'radius='/ 'party_size=2'/ 'next=False:CpQECokBCnwA_z-_XDZ6WHrr0P_-9whJUuD__0lujIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7PxsfLyf8Ac3_Oz8bHy8n_AP_-EBQhZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:34:43,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:08:35:02,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:50'/ 'radius='/ 'party_size=6'],26/Mar/2013:08:35:10,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:50'/ 'radius='/ 'party_size=6'/ 'next=False:CpQECokBCnwA_z-_e4e_f2h__f_-9whJWGn__yeQjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7Jx8_Mzv8Ac3_OycfPzM7_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:35:22,GET,200
+Party Size Button/,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:50'/ 'radius='/ 'party_size=6'],26/Mar/2013:08:35:10,GET,200
+Party Size Button/,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=08:50'/ 'radius='/ 'party_size=6'/ 'next=False:CpQECokBCnwA_z-_e4e_f2h__f_-9whJWGn__yeQjIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7Jx8_Mzv8Ac3_OycfPzM7_AP_-EAohZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:08:35:22,GET,200
 Score Info,/api/users/me/scores/info,['score_type=1'/ 'vendor=150758'/ 'party_size=6'],26/Mar/2013:08:35:25,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:08:35:32,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:10:13:47,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYme8CDA/status,None,26/Mar/2013:10:13:49,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYme8CDA/status,None,26/Mar/2013:10:13:49,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:13:50,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:10:13:58,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYmu8CDA/status,None,26/Mar/2013:10:14:00,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYmu8CDA/status,None,26/Mar/2013:10:14:00,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:14:01,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:10:14:08,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYgfcCDA/status,None,26/Mar/2013:10:14:11,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYgfcCDA/status,None,26/Mar/2013:10:14:11,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:14:11,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:10:14:22,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY6f4CDA/status,None,26/Mar/2013:10:14:25,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY6f4CDA/status,None,26/Mar/2013:10:14:25,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:14:26,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:10:15:01,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY0YYDDA/status,None,26/Mar/2013:10:15:12,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY0YYDDA/status,None,26/Mar/2013:10:15:12,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:15:13,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:10:55:08,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:11:05:12,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYuY4DDA/status,None,26/Mar/2013:11:05:31,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYuY4DDA/status,None,26/Mar/2013:11:05:31,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:11:05:32,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:11:10:34,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY6v4CDA/status,None,26/Mar/2013:11:30:38,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY6v4CDA/status,None,26/Mar/2013:11:30:38,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:11:30:38,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:12:40:57,GET,200
-Other,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=12:56'/ 'radius='/ 'party_size=6'/ 'next=False:CpQECokBCnwA_z-_XDZ6WHrr0P_-9whJUuD__0lujIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7PxsfLyf8Ac3_Oz8bHy8n_AP_-EBQhZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:12:41:04,GET,500
+Party Size Button/,/api/vendors/search,['lat=40.745508'/ 'lon=-73.985162'/ 'category='/ 'time=12:56'/ 'radius='/ 'party_size=6'/ 'next=False:CpQECokBCnwA_z-_XDZ6WHrr0P_-9whJUuD__0lujIGXnpiYk5rSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXYmakZuQjaCMmp6NnJeglpGbmof_AHN0bZuQnKCWm_8AXc7PxsfLyf8Ac3_Oz8bHy8n_AP_-EBQhZDNs3zvUke0SDURvY3VtZW50SW5kZXgaygEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-aGFnZ2xlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgInZlbmRvcl9zZWFyY2hfaW5kZXgiKSAoQU5EIChRVFAgIjFfOS4wIiAicnRleHRfb3Blbl9ob3VycyIpIChJUyAicmF0b21fcmVnaXN0ZXJlZCIgInRydWUiKSkpOnEKZChBREQgKEdFT19ESVNUIChMIHNnZW9fbG9jYXRpb24pIChMT0MgNDAuNzQ1NTA4IC03My45ODUxNjIpKSAoTVVMIChTVUIgMyAoTiBzbmJyX3VzZXJfcmF0aW5nKSkgMjUwKSkQABkAAAAAAAAAAEocCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckDoB1IZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_w'],26/Mar/2013:12:41:04,GET,500
 Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:12:41:08,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:12:41:10,GET,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:19:13:59,GET,200
-Other,/api/vendors/search,['lat=40.745849'/ 'lon=-73.988531'/ 'category='/ 'time=19:28'/ 'radius='/ 'party_size=2'],26/Mar/2013:19:13:59,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745849'/ 'lon=-73.988531'/ 'category='/ 'time=19:28'/ 'radius='/ 'party_size=2'],26/Mar/2013:19:13:59,GET,200
 Score Info,/api/users/me/scores/info,['score_type=1'/ 'vendor=84838'/ 'party_size=2'],26/Mar/2013:19:14:35,GET,200
 Score Info,/api/users/me/scores/info,['score_type=4'/ 'vendor=84838'/ 'party_size=2'],26/Mar/2013:19:14:50,GET,200
-Other,/api/vendors/search,['lat=40.745849'/ 'lon=-73.988531'/ 'category='/ 'time=19:30'/ 'radius='/ 'party_size=2'],26/Mar/2013:19:15:20,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745849'/ 'lon=-73.988531'/ 'category='/ 'time=19:30'/ 'radius='/ 'party_size=2'],26/Mar/2013:19:15:20,GET,200
 Haggle,/api/haggles,None,26/Mar/2013:19:16:13,POST,201
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYoZYDDA/status,None,26/Mar/2013:19:16:21,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYoZYDDA/status,None,26/Mar/2013:19:16:21,PUT,200
 Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:19:16:23,GET,200
 Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:19:16:31,GET,200
-Accept/Avail Deal,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYoZYDDA/status,None,26/Mar/2013:19:16:36,PUT,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYoZYDDA/status,None,26/Mar/2013:19:16:36,PUT,200
 Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364270460'/ 'to=1364356740'],26/Mar/2013:19:16:36,GET,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYoZYDDA/status,None,27/Mar/2013:15:07:49,PUT,401
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:07:51,GET,200
+Settings/Data Request Screen,/api/users/me/networks,None,27/Mar/2013:15:07:54,GET,200
+Logout,/logout,None,27/Mar/2013:15:07:56,POST,200
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:08:04,GET,200
+Refresh/Home Screen,/api/vendors/search,['lat=40.745524'/ 'lon=-73.985243'/ 'category='/ 'time=15:23'/ 'radius='/ 'party_size=2'],27/Mar/2013:15:08:05,GET,200
+Score Info,/api/users/me/scores/info,['score_type=1'/ 'vendor=170066'/ 'party_size=2'],27/Mar/2013:15:09:36,GET,200
+Score Info,/api/users/me/scores/info,['score_type=4'/ 'vendor=170066'/ 'party_size=2'],27/Mar/2013:15:10:07,GET,200
+Haggle,/api/haggles,None,27/Mar/2013:15:13:04,POST,201
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYiZ4DDA/status,None,27/Mar/2013:15:13:10,PUT,200
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:12,GET,200
+Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:18,GET,200
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:22,GET,200
+Haggle,/api/haggles,None,27/Mar/2013:15:13:32,POST,201
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwY8aUDDA/status,None,27/Mar/2013:15:13:36,PUT,200
+Deal Count Badge,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:38,GET,200
+Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:43,GET,200
+Accept/Avail Deal/Entering Vendor Code,/api/haggles/ag1zfmhhZ2dsZS1wcm9kcikLEgRVc2VyIhNyc2FsaW1hdGhAZ21haWwuY29tDAsSBERlYWwYiZ4DDA/status,None,27/Mar/2013:15:13:51,PUT,200
+Your Bargains Screen,/api/haggles,['status=INTERESTED'/ 'status=ACCEPTED'/ 'status=AVAILED'/ 'from=1364356860'/ 'to=1364443140'],27/Mar/2013:15:13:52,GET,200

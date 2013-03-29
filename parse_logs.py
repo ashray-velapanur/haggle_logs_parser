@@ -36,25 +36,33 @@ def get_datetime_from_timestamp(timestamp):
 def get_mapping(url, params, method, timestamp):
     format = '%H:%M'
     time_struct = get_datetime_from_timestamp(timestamp)
-    time_plus_15 = get_string_from_datetime(time_struct + timedelta(minutes=15), format)
+    time_plus_15 = 'time=' + get_string_from_datetime(time_struct + timedelta(minutes=15), format)
     if url == '/users/login':
         return 'Login'
-    if params and url == '/api/vendors/search' and not [param for param in params if param.startswith('q=')]:
-        if time_plus_15 in [param.split('=')[1] for param in params if param.startswith('time=')]:
-            if 'party_size=2' in params:
-                return 'Refresh Button/Home Screen'
-            return 'Party Size Button'
-        elif 'category=' not in params or 'radius=' not in params:
-            return 'Filters Screen'
-        return 'Time Button'
-    if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params and 'status=AVAILED' in params:
+    if params and url == '/api/vendors/search': 
+        ret_str = ''
+        if len(params) < 6:
+            if [param for param in params if param.startswith('q=')]:
+                ret_str += 'Text Search'
+                return ret_str
+            return 'Other Search'
+        if 'party_size=2' not in params:
+            ret_str += 'Party Size Button/'
+        if time_plus_15 not in params: 
+            ret_str += 'Time Button/'
+        if 'category=' not in params or 'radius=' not in params:
+            ret_str += 'Filters Screen'
+        if ret_str == '':
+            ret_str = 'Refresh/Home Screen'
+        return ret_str
+    if url == '/api/haggles' and params and 'status=INTERESTED' in params and 'status=ACCEPTED' in params and 'status=AVAILED' in params:
         return 'Your Bargains Screen'
-    if url == '/api/haggles' and params is not None and 'status=INTERESTED' in params and 'status=ACCEPTED' in params:
+    if url == '/api/haggles' and params and 'status=INTERESTED' in params and 'status=ACCEPTED' in params:
         return 'Deal Count Badge'
     if url == '/api/haggles' and method == 'POST':
         return 'Haggle'
     if url.startswith('/api/haggles') and method == 'PUT':
-        return 'Accept/Avail Deal'
+        return 'Accept/Avail Deal/Entering Vendor Code'
     if url == '/api/users/me/scores/info':
         return 'Score Info'
     if url == '/users/update_accesstoken':
