@@ -111,6 +111,6 @@ for line in logs:
 
 write_to_files(requests)
 
-with open('out.txt', 'w') as file:
-    json.dump(requests, file, indent=4)
+#with open('out.txt', 'w') as file:
+#    json.dump(requests, file, indent=4)
 
