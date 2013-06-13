@@ -19,7 +19,7 @@ def get_http_method(line):
 def get_user(line):
     if re.match(r"[^@]+@[^@]+\.[^@]+", line.split(' ')[1]):
         return line.split(' ')[1].strip()
-    return None
+    return 'other'
 
 def get_string_from_datetime(time_struct, format):
     return datetime.strftime(time_struct, format)
@@ -71,16 +71,22 @@ def get_mapping(url, params, method, timestamp):
         return 'Settings/Data Request Screen'
     if url == '/logout':
         return 'Logout'
+    if url == '/showcase/leaderboard' and method == 'GET':
+        return 'Leaderboards'
+    if url == '/showcase/leaderboard' and method == 'POST':
+        return 'Haggle Challenge'
+    if url == '/showcase/haggle_challenge':
+        return 'Haggle Challenge'
+    if url == '/nytd':
+        return 'NYTD'
     return 'Other'
 
 def write_to_files(requests):
-    for user in set([request['user'] for request in requests if request['user']]):
-        file = open(user + '_logs.csv', 'w')
-        file.write('Endpoint,URL,Params,Time,Method,Response\n')
-        for request in requests:
-            if request['user'] == user: 
-                with open(user + '_logs.csv', 'a') as file:
-                    file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
+    for request in requests:
+        if request['user'] == 'other' and request['endpoint'] == 'Other':
+            continue
+        with open('logs/' + request['user'] + '.csv', 'a') as file:
+            file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
         file.close()
 
 with open('logs.txt') as file:
