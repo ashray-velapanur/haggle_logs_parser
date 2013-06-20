@@ -89,7 +89,7 @@ def write_to_files(requests):
             file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
         file.close()
 
-with open('logs.txt') as file:
+with open('downloaded_logs/logs.txt') as file:
     logs = file.readlines()
 
 requests = []
