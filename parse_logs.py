@@ -1,8 +1,29 @@
+'''
+1) Make sure to Sync Google Drive to local home directory such that google drive path is '~/Google Drive' where ~ is home directory
+2) Go to '~/Google Drive/Alpha/downloaded_logs/logs.txt' and make sure that there are only the LAST TWO LOG RECORDS from the previous run(empty file if no previous run)
+3) From '~/Google Drive/Alpha/downloaded_logs' execute the following command if there was already a previous run:
+    appcfg.py --verbose --append --severity=0 --application=haggle-prod --version=1 request_logs logs.txt
+   Else if there was no previous run, then execute the below command replacing <no_of_days> with number of days of logs required(do not execute this command if there was a previous run):
+    appcfg.py --verbose --num_days=14 --severity=0 --application=haggle-prod --version=1 request_logs logs.txt
+4) Now execute parse_logs.py
+5) On executing parse_logs.py, you should notice the following:
+    a) The log.txt file should now have only the LAST TWO LOG RECORDS(most recent at time of running appcfg)
+    b) The ~/Google Drive/Alpha/logs/ folder should have been updated with the latest logs for each user
+    c) The ~/Google Drive/Alpha/timelines/ folder should have been updated with the latest timelines for each user
+6) If you wish to run this on a local folder other than the Google Drive, then please point the LOG_BASE in the script appropriately
+'''
 import re
+import os
 import sys
 import json
 from time import mktime
 from datetime import timedelta, datetime
+from pytz import timezone
+
+TZ_EASTERN = timezone('US/Eastern')
+LOG_BASE = '~/Google Drive/Alpha/'
+#LOG_BASE = ''
+format = '%d/%b/%Y:%H:%M:%S'
 
 def get_url_and_params(line):
     url = line.split(' ')[6].split('?') 
@@ -28,10 +49,10 @@ def get_timestamp(line):
     return line.split(' ')[0].split(':')[1]
 
 def get_string_from_timestamp(timestamp, format):
-    return datetime.fromtimestamp(float(timestamp)).strftime(format)
+    return datetime.fromtimestamp(float(timestamp), TZ_EASTERN).strftime(format)
 
 def get_datetime_from_timestamp(timestamp):
-    return datetime.fromtimestamp(float(timestamp))
+    return datetime.fromtimestamp(float(timestamp), TZ_EASTERN)
 
 def get_mapping(url, params, method, timestamp):
     format = '%H:%M'
@@ -85,17 +106,43 @@ def write_to_files(requests):
     for request in requests:
         if request['user'] == 'other' and request['endpoint'] == 'Other':
             continue
-        with open('logs/' + request['user'] + '.csv', 'a') as file:
+        with open(os.path.expanduser(LOG_BASE + 'logs/') + request['user'] + '.csv', 'a') as file:
             file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
-        file.close()
+        first_line = None
+        try:
+           with open(os.path.expanduser(LOG_BASE + 'timelines/') + request['user'] + '.csv') as file:
+               lines = file.readlines()
+               if len(lines) > 0:
+                   file.seek(0)
+                   first_line = file.readline()
+        except IOError: pass
+        with open(os.path.expanduser(LOG_BASE + 'timelines/') + request['user'] + '.csv', 'a') as file:
+            current_time = datetime.strptime(request['time'], format)
+            if first_line:
+                first_time = datetime.strptime(first_line.split(',')[1], format)
+            else:
+                first_time = current_time
+            time_delta = current_time - first_time
+            print >>file, request['endpoint'] + ',' + request['time'] + ',' + str(time_delta)
 
-with open('downloaded_logs/logs.txt') as file:
+with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt')) as file:
     logs = file.readlines()
 
 requests = []
 
+record_count = 0
+skip = True
+record_last = None
+record_second_last = None
 for line in logs:
     if not line.startswith('\t'):
+        record_second_last = record_last
+        record_last = []
+        if record_count < 2:
+            record_count = record_count + 1
+            record_last.append(line)
+            continue
+        record_count = record_count + 1
         request = {}
         skip = False
         request['url'], request['params'] = get_url_and_params(line)
@@ -108,6 +155,16 @@ for line in logs:
         request['endpoint'] = get_mapping(request['url'], request['params'], request['http_method'], request['timestamp'])
         requests.append(request)
         skip = True
+    record_last.append(line)
+
+if record_count > 2:
+    with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt'), 'w') as file:
+        if record_second_last:
+            for line in record_second_last:
+                file.write(line)
+        if record_last:
+            for line in record_last:
+                file.write(line)
 
 write_to_files(requests)
 
