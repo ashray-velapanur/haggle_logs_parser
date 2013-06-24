@@ -4,7 +4,7 @@
 3) From '~/Google Drive/Alpha/downloaded_logs' execute the following command if there was already a previous run:
     appcfg.py --verbose --append --severity=0 --application=haggle-prod --version=1 request_logs logs.txt
    Else if there was no previous run, then execute the below command replacing <no_of_days> with number of days of logs required(do not execute this command if there was a previous run):
-    appcfg.py --verbose --num_days=14 --severity=0 --application=haggle-prod --version=1 request_logs logs.txt
+    appcfg.py --verbose --num_days=<no_of_days> --severity=0 --application=haggle-prod --version=1 request_logs logs.txt
 4) Now execute parse_logs.py
 5) On executing parse_logs.py, you should notice the following:
     a) The log.txt file should now have only the LAST TWO LOG RECORDS(most recent at time of running appcfg)
@@ -103,30 +103,33 @@ def get_mapping(url, params, method, timestamp):
     return 'Other'
 
 def write_to_files(requests):
+    users_requests = {}
     for request in requests:
         if request['user'] == 'other' and request['endpoint'] == 'Other':
             continue
-        with open(os.path.expanduser(LOG_BASE + 'logs/') + request['user'] + '.csv', 'a') as file:
-            file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
-        first_line = None
-        try:
-           with open(os.path.expanduser(LOG_BASE + 'timelines/') + request['user'] + '.csv') as file:
-               lines = file.readlines()
-               if len(lines) > 0:
-                   file.seek(0)
-                   first_line = file.readline()
-        except IOError: pass
-        with open(os.path.expanduser(LOG_BASE + 'timelines/') + request['user'] + '.csv', 'a') as file:
-            current_time = datetime.strptime(request['time'], format)
-            if first_line:
-                first_time = datetime.strptime(first_line.split(',')[1], format)
-            else:
-                first_time = current_time
-            time_delta = current_time - first_time
-            print >>file, request['endpoint'] + ',' + request['time'] + ',' + str(time_delta)
+        if request['user'] not in users_requests:
+            users_requests[request['user']] = []
+        users_requests[request['user']].append(request)
 
-with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt')) as file:
-    logs = file.readlines()
+    for user in users_requests.keys():
+        with open(os.path.expanduser(LOG_BASE + 'logs/') + user + '.csv', 'a') as log_file:
+            for request in users_requests[user]:
+                log_file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
+        with open(os.path.expanduser(LOG_BASE + 'timelines/') + user + '.csv', 'a+') as timeline_file:
+            first_line = first_time = None
+            timeline_file.seek(0)
+            first_line = timeline_file.readline()
+            if first_line and first_line != '':
+                first_time = datetime.strptime(first_line.split(',')[1], format)
+            for request in users_requests[user]:
+                current_time = datetime.strptime(request['time'], format)
+                if not first_time:
+                    first_time = current_time
+                time_delta = current_time - first_time
+                timeline_file.write(request['endpoint'] + ',' + request['time'] + ',' + str(time_delta) + '\n')
+
+with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt')) as downloaded_log_file:
+    logs = downloaded_log_file.readlines()
 
 requests = []
 
@@ -158,13 +161,13 @@ for line in logs:
     record_last.append(line)
 
 if record_count > 2:
-    with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt'), 'w') as file:
+    with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt'), 'w') as downloaded_log_file:
         if record_second_last:
             for line in record_second_last:
-                file.write(line)
+                downloaded_log_file.write(line)
         if record_last:
             for line in record_last:
-                file.write(line)
+                downloaded_log_file.write(line)
 
 write_to_files(requests)
 
