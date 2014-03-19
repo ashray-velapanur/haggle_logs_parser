@@ -21,8 +21,7 @@ from datetime import timedelta, datetime
 from pytz import timezone
 
 TZ_EASTERN = timezone('US/Eastern')
-LOG_BASE = '~/Google Drive/Alpha/'
-#LOG_BASE = ''
+LOG_BASE = os.path.expanduser('~') + '/Google Drive/Logs/Launch/'
 format = '%d/%b/%Y:%H:%M:%S'
 
 def get_url_and_params(line):
@@ -107,26 +106,33 @@ def write_to_files(requests):
     for request in requests:
         if request['user'] == 'other' and request['endpoint'] == 'Other':
             continue
-        if request['user'] not in users_requests:
-            users_requests[request['user']] = []
-        users_requests[request['user']].append(request)
-
-    for user in users_requests.keys():
-        with open(os.path.expanduser(LOG_BASE + 'logs/') + user + '.csv', 'a') as log_file:
-            for request in users_requests[user]:
-                log_file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
-        with open(os.path.expanduser(LOG_BASE + 'timelines/') + user + '.csv', 'a+') as timeline_file:
-            first_line = first_time = None
-            timeline_file.seek(0)
-            first_line = timeline_file.readline()
-            if first_line and first_line != '':
-                first_time = datetime.strptime(first_line.split(',')[1], format)
-            for request in users_requests[user]:
-                current_time = datetime.strptime(request['time'], format)
-                if not first_time:
-                    first_time = current_time
-                time_delta = current_time - first_time
-                timeline_file.write(request['endpoint'] + ',' + request['time'] + ',' + str(time_delta) + '\n')
+        if request['date'] not in users_requests:
+            users_requests[request['date']] = {}
+        if request['user'] not in users_requests[request['date']]:
+            users_requests[request['date']][request['user']] = []
+        users_requests[request['date']][request['user']].append(request)
+    
+    for date in users_requests.keys():
+        for user in users_requests[date].keys():
+            if not os.path.exists(LOG_BASE + 'logs/' + date + '/'):
+                os.mkdir(LOG_BASE + 'logs/' + date + '/')
+            if not os.path.exists(LOG_BASE + 'timelines/' + date + '/'):
+                os.mkdir(LOG_BASE + 'timelines/' + date + '/')
+            with open(os.path.expanduser(LOG_BASE + 'logs/') + date + '/' + user + '.csv', 'a') as log_file:
+                for request in users_requests[date][user]:
+                    log_file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
+            with open(os.path.expanduser(LOG_BASE + 'timelines/') + date + '/' + user + '.csv', 'a+') as timeline_file:
+                first_line = first_time = None
+                timeline_file.seek(0)
+                first_line = timeline_file.readline()
+                if first_line and first_line != '':
+                    first_time = datetime.strptime(first_line.split(',')[1], format)
+                for request in users_requests[date][user]:
+                    current_time = datetime.strptime(request['time'], format)
+                    if not first_time:
+                        first_time = current_time
+                    time_delta = current_time - first_time
+                    timeline_file.write(request['endpoint'] + ',' + request['time'] + ',' + str(time_delta) + '\n')
 
 with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt')) as downloaded_log_file:
     logs = downloaded_log_file.readlines()
@@ -155,6 +161,7 @@ for line in logs:
         request['user'] = get_user(line)
         request['timestamp'] = get_timestamp(line)
         request['time'] = get_string_from_timestamp(request['timestamp'], '%d/%b/%Y:%H:%M:%S')
+        request['date'] = get_string_from_timestamp(request['timestamp'], '%d-%b')
         request['endpoint'] = get_mapping(request['url'], request['params'], request['http_method'], request['timestamp'])
         requests.append(request)
         skip = True
