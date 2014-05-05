@@ -118,10 +118,10 @@ def write_to_files(requests):
                 os.mkdir(LOG_BASE + 'logs/' + date + '/')
             if not os.path.exists(LOG_BASE + 'timelines/' + date + '/'):
                 os.mkdir(LOG_BASE + 'timelines/' + date + '/')
-            with open(os.path.expanduser(LOG_BASE + 'logs/') + date + '/' + user + '.csv', 'a') as log_file:
+            with open(os.path.expanduser(LOG_BASE + 'logs/') + date + '/' + user + '.csv', 'w+') as log_file:
                 for request in users_requests[date][user]:
                     log_file.write(request['endpoint'] + ',' + request['url'] + ',' + str(request['params']).replace(',','/') + ',' + request['time'] + ',' + request['http_method'] + ',' + request['http_response'] + '\n')
-            with open(os.path.expanduser(LOG_BASE + 'timelines/') + date + '/' + user + '.csv', 'a+') as timeline_file:
+            with open(os.path.expanduser(LOG_BASE + 'timelines/') + date + '/' + user + '.csv', 'w+') as timeline_file:
                 first_line = first_time = None
                 timeline_file.seek(0)
                 first_line = timeline_file.readline()
@@ -167,6 +167,7 @@ for line in logs:
         skip = True
     record_last.append(line)
 
+'''
 if record_count > 2:
     with open(os.path.expanduser(LOG_BASE + 'downloaded_logs/logs.txt'), 'w') as downloaded_log_file:
         if record_second_last:
@@ -175,6 +176,7 @@ if record_count > 2:
         if record_last:
             for line in record_last:
                 downloaded_log_file.write(line)
+'''
 
 write_to_files(requests)
 
