@@ -13,7 +13,7 @@ f.close()
 users_dict = {}
 for line in lines:
     name, email, id = line.strip().split(' , ')
-    users_dict[email] = (name, id)
+    users_dict[email] = (name, id, email)
 
 google_drive = GOOGLE_DRIVE + '/Logs/Launch/timelines'
 days = [d for d in listdir(google_drive) if isdir(join(google_drive, d))]
@@ -39,7 +39,7 @@ for day in sorted(days_dict.keys()):
 for user_file, usage in usage_dict.iteritems():
     email = user_file[:-4]
     if email in users_dict:
-        print >> usage_by_user_file, users_dict[email][0], ',', 'http://www.facebook.com/'+users_dict[email][1], ',', usage
+        print >> usage_by_user_file, users_dict[email][0], ',', users_dict[email][2], ',','http://www.facebook.com/'+users_dict[email][1], ',', usage
 
 #print ''
 unique_users = set()
